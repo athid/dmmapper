@@ -105,7 +105,7 @@ def load_overlays(asset_dir: str) -> Dict[str, Image.Image]:
         Missing overlays are mapped to ``None`` instead of raising an error.
     """
     overlays: Dict[str, Image.Image] = {}
-    for name in ["pressure_plate", "button"]:
+    for name in ["pressure_plate", "button", "stairs_up", "stairs_down"]:
         filename = f"{name}.png"
         path = os.path.join(asset_dir, filename)
         if os.path.isfile(path):
@@ -188,7 +188,10 @@ def render_level(
     height = len(grid)
     width = len(grid[0]) if height > 0 else 0
     # Orientation grid for doors (optional)
-    orientation_grid = level_data.get("door_orientation")
+    door_orientation_grid = level_data.get("door_orientation")
+    # Orientation and direction grids for stairs (optional)
+    stairs_orientation_grid = level_data.get("stairs_orientation")
+    stairs_direction_grid = level_data.get("stairs_direction")
     # Create blank canvas for the map
     img_width = width * tile_size
     img_height = height * tile_size
@@ -197,21 +200,98 @@ def render_level(
     for y in range(height):
         for x in range(width):
             tile_type = grid[y][x]
-            # Determine orientation for door tiles
-            orientation = None
-            if tile_type == 'door' and orientation_grid is not None:
-                # orientation_grid is 32x32; indices safe if within bounds
-                if y < len(orientation_grid) and x < len(orientation_grid[y]):
-                    orientation = orientation_grid[y][x]
-            # Get base tile image
+            # Base image for tile
             base_img = tile_map.get(tile_type, tile_map.get('wall'))
             if base_img is None:
                 raise ValueError(f"No base image found for tile type '{tile_type}'")
-            # Rotate door tile if orientation indicates vertical
-            if tile_type == 'door' and orientation == 'vertical':
-                rotated_img = base_img.rotate(-90, expand=False)
-                canvas.paste(rotated_img, (x * tile_size, y * tile_size))
+            # Handle door orientation
+            if tile_type == 'door':
+                orientation = None
+                if door_orientation_grid is not None:
+                    if y < len(door_orientation_grid) and x < len(door_orientation_grid[y]):
+                        orientation = door_orientation_grid[y][x]
+                if orientation == 'vertical':
+                    rotated_img = base_img.rotate(-90, expand=False)
+                    canvas.paste(rotated_img, (x * tile_size, y * tile_size))
+                else:
+                    canvas.paste(base_img, (x * tile_size, y * tile_size))
+            # Handle stairs orientation and direction
+            elif tile_type == 'stairs':
+                # Determine how to rotate the stair base tile.  Prefer to align the stair
+                # so that the “open” side (floor/teleporter/door) points towards the
+                # adjacent exit tile.  First, look up the orientation and up/down bits
+                # (in case there are no obvious adjacent exits).
+                orientation = None
+                direction = None
+                if stairs_orientation_grid is not None:
+                    if y < len(stairs_orientation_grid) and x < len(stairs_orientation_grid[y]):
+                        orientation = stairs_orientation_grid[y][x]
+                if stairs_direction_grid is not None:
+                    if y < len(stairs_direction_grid) and x < len(stairs_direction_grid[y]):
+                        direction = stairs_direction_grid[y][x]
+
+                # Find valid exit tiles around the stair: floor, teleporter, or door
+                # Note: the grid indices are y first (row), x second (column)
+                exits = []
+                # Up (north)
+                if y > 0:
+                    tile_above = grid[y - 1][x]
+                    if tile_above in ("floor", "door", "teleporter"):
+                        exits.append(("up", tile_above))
+                # Right (east)
+                if x < width - 1:
+                    tile_right = grid[y][x + 1]
+                    if tile_right in ("floor", "door", "teleporter"):
+                        exits.append(("right", tile_right))
+                # Down (south)
+                if y < height - 1:
+                    tile_below = grid[y + 1][x]
+                    if tile_below in ("floor", "door", "teleporter"):
+                        exits.append(("down", tile_below))
+                # Left (west)
+                if x > 0:
+                    tile_left = grid[y][x - 1]
+                    if tile_left in ("floor", "door", "teleporter"):
+                        exits.append(("left", tile_left))
+
+                # Determine rotation angle based on exits.  If exactly one exit, use it.
+                # If multiple exits, pick the first one found.  If none, fall back to
+                # orientation bits (vertical/horizontal) to orient the base tile.
+                rotation_angle = 0
+                if exits:
+                    # Pick the first exit in the order checked (up, right, down, left)
+                    exit_direction = exits[0][0]
+                    if exit_direction == "right":
+                        rotation_angle = 0  # default orientation: open to the right
+                    elif exit_direction == "down":
+                        rotation_angle = 90
+                    elif exit_direction == "left":
+                        rotation_angle = 180
+                    elif exit_direction == "up":
+                        rotation_angle = -90
+                else:
+                    # Fall back to orientation bits: rotate base 90° clockwise if vertical
+                    if orientation == "vertical":
+                        rotation_angle = -90
+                    else:
+                        rotation_angle = 0
+
+                # Rotate the base stair image
+                rotated_base = base_img.rotate(rotation_angle, expand=False)
+                canvas.paste(rotated_base, (x * tile_size, y * tile_size))
+
+                # Draw the arrow overlay if we have one, based on the direction (up/down) bit.
+                # Do not rotate the arrow; keep it in its original orientation.
+                if direction:
+                    overlay_name = 'stairs_up' if direction == 'up' else 'stairs_down'
+                    overlay_icon = overlays.get(overlay_name)
+                    if overlay_icon:
+                        rotated_overlay = overlay_icon  # keep original orientation
+                        dx = x * tile_size + (tile_size - rotated_overlay.width) // 2
+                        dy = y * tile_size + (tile_size - rotated_overlay.height) // 2
+                        canvas.alpha_composite(rotated_overlay, (dx, dy))
             else:
+                # Default behaviour for other tiles
                 canvas.paste(base_img, (x * tile_size, y * tile_size))
     # Overlay pressure plates
     plates = plates_by_level.get(level_num, [])

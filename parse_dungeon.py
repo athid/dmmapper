@@ -130,17 +130,18 @@ def parse_maps(
 
     Returns
     -------
-    (level_info_list, raw_tile_data_list, raw_presence_data_list, orientation_data_list)
-        level_info_list: list of dicts with keys 'level', 'width', 'height', 'grid' (32×32 list of names)
+    (level_info_list, raw_tile_data_list, raw_presence_data_list)
+        level_info_list: list of dicts with keys 'level', 'width', 'height', 'grid' (32×32 list of names) and
+        additional fields 'door_orientation', 'stairs_orientation', 'stairs_direction'.  Each of these
+        additional fields is a 32×32 grid where valid entries are strings ('horizontal', 'vertical', 'up', 'down')
+        or ``None`` for non‑door and non‑stairs tiles.
         raw_tile_data_list: list of 2D arrays (height × width) of numeric tile codes (0..7)
         raw_presence_data_list: list of 2D boolean arrays (height × width) indicating if objects are present on each tile (bit 4 set)
-        orientation_data_list: list of 2D arrays (height × width) with orientation strings for door tiles
     """
     base_map_data_offset = 0x5250  # Start of global map data for DM1 PC
     level_info_list: List[dict] = []
     raw_tile_data: List[List[List[int]]] = []
     raw_presence_data: List[List[List[bool]]] = []
-    orientation_data: List[List[List[str]]] = []
     for map_index, mdef in enumerate(map_defs):
         start = base_map_data_offset + mdef['offset']
         w = mdef['width']
@@ -151,6 +152,8 @@ def parse_maps(
         tile_codes: List[List[int]] = [[0] * w for _ in range(h)]
         presence: List[List[bool]] = [[False] * w for _ in range(h)]
         orient: List[List[str]] = [[None] * w for _ in range(h)]  # 'horizontal'/'vertical' for doors
+        stairs_orient: List[List[str]] = [[None] * w for _ in range(h)]  # 'horizontal'/'vertical' for stairs
+        stairs_dir: List[List[str]] = [[None] * w for _ in range(h)]  # 'up'/'down' for stairs
         idx = 0
         for x in range(w):
             for y in range(h):
@@ -162,10 +165,15 @@ def parse_maps(
                 if tile_code == 4:
                     orientation_bit = (tile_byte >> 3) & 1
                     orient[y][x] = 'vertical' if orientation_bit == 1 else 'horizontal'
+                # Orientation and direction for stairs (tile_code 3).  Bit 3: orientation (0 horizontal, 1 vertical); Bit 2: direction (0 down, 1 up)
+                if tile_code == 3:
+                    orientation_bit = (tile_byte >> 3) & 1
+                    direction_bit = (tile_byte >> 2) & 1
+                    stairs_orient[y][x] = 'vertical' if orientation_bit == 1 else 'horizontal'
+                    stairs_dir[y][x] = 'up' if direction_bit == 1 else 'down'
                 idx += 1
         raw_tile_data.append(tile_codes)
         raw_presence_data.append(presence)
-        orientation_data.append(orient)
         # skip creature graphics
         skip_offset = start + w * h
         skip_offset += mdef['creature_graphics_count']
@@ -184,9 +192,11 @@ def parse_maps(
             'width': w,
             'height': h,
             'grid': padded_grid,
-            'door_orientation': [[orient[y][x] if x < w and y < h else None for x in range(32)] for y in range(32)],
+            'door_orientation': [[orient[y][x] if (y < h and x < w) else None for x in range(32)] for y in range(32)],
+            'stairs_orientation': [[stairs_orient[y][x] if (y < h and x < w) else None for x in range(32)] for y in range(32)],
+            'stairs_direction': [[stairs_dir[y][x] if (y < h and x < w) else None for x in range(32)] for y in range(32)],
         })
-    return level_info_list, raw_tile_data, raw_presence_data, orientation_data
+    return level_info_list, raw_tile_data, raw_presence_data
 
 
 def map_objects_to_tiles(
@@ -340,7 +350,7 @@ def main():
         6: 'trick_wall',
         7: 'empty',
     }
-    level_info_list, raw_tile_data, raw_presence_data, orientation_data = parse_maps(data, map_defs, legend_map)
+    level_info_list, raw_tile_data, raw_presence_data = parse_maps(data, map_defs, legend_map)
     # Prepare output directory
     os.makedirs(args.output_dir, exist_ok=True)
     # Write each level to JSON
