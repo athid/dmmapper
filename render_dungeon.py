@@ -187,6 +187,8 @@ def render_level(
     tile_size = next(iter(tile_map.values())).size[0]
     height = len(grid)
     width = len(grid[0]) if height > 0 else 0
+    # Orientation grid for doors (optional)
+    orientation_grid = level_data.get("door_orientation")
     # Create blank canvas for the map
     img_width = width * tile_size
     img_height = height * tile_size
@@ -195,11 +197,22 @@ def render_level(
     for y in range(height):
         for x in range(width):
             tile_type = grid[y][x]
-            # If tile_type not recognized, default to wall
-            base_img = tile_map.get(tile_type, tile_map.get("wall"))
+            # Determine orientation for door tiles
+            orientation = None
+            if tile_type == 'door' and orientation_grid is not None:
+                # orientation_grid is 32x32; indices safe if within bounds
+                if y < len(orientation_grid) and x < len(orientation_grid[y]):
+                    orientation = orientation_grid[y][x]
+            # Get base tile image
+            base_img = tile_map.get(tile_type, tile_map.get('wall'))
             if base_img is None:
                 raise ValueError(f"No base image found for tile type '{tile_type}'")
-            canvas.paste(base_img, (x * tile_size, y * tile_size))
+            # Rotate door tile if orientation indicates vertical
+            if tile_type == 'door' and orientation == 'vertical':
+                rotated_img = base_img.rotate(-90, expand=False)
+                canvas.paste(rotated_img, (x * tile_size, y * tile_size))
+            else:
+                canvas.paste(base_img, (x * tile_size, y * tile_size))
     # Overlay pressure plates
     plates = plates_by_level.get(level_num, [])
     plate_icon = overlays.get("pressure_plate")
