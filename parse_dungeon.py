@@ -17,7 +17,7 @@ Usage:
 
     python parse_dungeon.py \
         --input /path/to/DUNGEON.DAT \
-        --output_dir /path/to/outputo
+        --output_dir /path/to/output
 
 The output directory will contain ``level_00.json`` through ``level_NN.json``
 for each map, and ``legend.json`` containing a mapping from numeric tile
@@ -130,15 +130,17 @@ def parse_maps(
 
     Returns
     -------
-    (level_info_list, raw_tile_data_list, raw_presence_data_list)
+    (level_info_list, raw_tile_data_list, raw_presence_data_list, orientation_data_list)
         level_info_list: list of dicts with keys 'level', 'width', 'height', 'grid' (32×32 list of names)
         raw_tile_data_list: list of 2D arrays (height × width) of numeric tile codes (0..7)
         raw_presence_data_list: list of 2D boolean arrays (height × width) indicating if objects are present on each tile (bit 4 set)
+        orientation_data_list: list of 2D arrays (height × width) with orientation strings for door tiles
     """
     base_map_data_offset = 0x5250  # Start of global map data for DM1 PC
     level_info_list: List[dict] = []
     raw_tile_data: List[List[List[int]]] = []
     raw_presence_data: List[List[List[bool]]] = []
+    orientation_data: List[List[List[str]]] = []
     for map_index, mdef in enumerate(map_defs):
         start = base_map_data_offset + mdef['offset']
         w = mdef['width']
@@ -148,15 +150,22 @@ def parse_maps(
         # build raw tile code grid (h rows, w columns) and presence grid
         tile_codes: List[List[int]] = [[0] * w for _ in range(h)]
         presence: List[List[bool]] = [[False] * w for _ in range(h)]
+        orient: List[List[str]] = [[None] * w for _ in range(h)]  # 'horizontal'/'vertical' for doors
         idx = 0
         for x in range(w):
             for y in range(h):
                 tile_byte = tiles_bytes[idx]
-                tile_codes[y][x] = (tile_byte >> 5) & 0x7  # numeric tile code
+                tile_code = (tile_byte >> 5) & 0x7
+                tile_codes[y][x] = tile_code
                 presence[y][x] = (tile_byte & 0x10) != 0  # bit 4 indicates objects on tile
+                # Orientation for door tiles (tile_code 4).  Bit 3 of tile_byte indicates orientation: 0 = horizontal (west-east), 1 = vertical (north-south)
+                if tile_code == 4:
+                    orientation_bit = (tile_byte >> 3) & 1
+                    orient[y][x] = 'vertical' if orientation_bit == 1 else 'horizontal'
                 idx += 1
         raw_tile_data.append(tile_codes)
         raw_presence_data.append(presence)
+        orientation_data.append(orient)
         # skip creature graphics
         skip_offset = start + w * h
         skip_offset += mdef['creature_graphics_count']
@@ -175,8 +184,9 @@ def parse_maps(
             'width': w,
             'height': h,
             'grid': padded_grid,
+            'door_orientation': [[orient[y][x] if x < w and y < h else None for x in range(32)] for y in range(32)],
         })
-    return level_info_list, raw_tile_data, raw_presence_data
+    return level_info_list, raw_tile_data, raw_presence_data, orientation_data
 
 
 def map_objects_to_tiles(
@@ -330,7 +340,7 @@ def main():
         6: 'trick_wall',
         7: 'empty',
     }
-    level_info_list, raw_tile_data, raw_presence_data = parse_maps(data, map_defs, legend_map)
+    level_info_list, raw_tile_data, raw_presence_data, orientation_data = parse_maps(data, map_defs, legend_map)
     # Prepare output directory
     os.makedirs(args.output_dir, exist_ok=True)
     # Write each level to JSON
