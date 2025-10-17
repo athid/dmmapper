@@ -329,7 +329,19 @@ def render_level(
             dx = x * tile_size + (tile_size - rotated.width) // 2
             dy = y * tile_size + (tile_size - rotated.height) // 2
             canvas.alpha_composite(rotated, (dx, dy))
-    # Prepare output path
+    # Add a black border around the map.  A fixed border of 50 pixels is drawn
+    # on all four sides of the image.  To change the border thickness, adjust
+    # the ``border_size`` value below.
+    border_size = 50
+    if border_size > 0:
+        bordered_width = img_width + border_size * 2
+        bordered_height = img_height + border_size * 2
+        # Create a new black background (fully opaque)
+        bordered_canvas = Image.new("RGBA", (bordered_width, bordered_height), (0, 0, 0, 255))
+        # Paste the rendered map onto the bordered canvas with an offset
+        bordered_canvas.paste(canvas, (border_size, border_size))
+        canvas = bordered_canvas
+    # Prepare output path and save the image
     os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, f"level_{level_num:02d}.png")
     canvas.save(output_path)
