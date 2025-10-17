@@ -116,8 +116,13 @@ def parse_maps(
     data: bytes,
     map_defs: List[dict],
     legend_map: Dict[int, str],
-) -> Tuple[List[dict], List[List[List[int]]], List[List[List[bool]]]]:
-    """Parse all map tile data and return level info, tile codes, and object presence flags.
+) -> Tuple[
+    List[dict],                      # level_info_list
+    List[List[List[int]]],           # raw_tile_data_list
+    List[List[List[bool]]],          # raw_presence_data_list
+    List[List[int]],                 # wall decoration lists per map
+]:
+    """Parse all map tile data and return level info, tile codes, presence flags, and wall decorations.
 
     Parameters
     ----------
@@ -130,18 +135,20 @@ def parse_maps(
 
     Returns
     -------
-    (level_info_list, raw_tile_data_list, raw_presence_data_list)
+    (level_info_list, raw_tile_data_list, raw_presence_data_list, wall_decorations)
         level_info_list: list of dicts with keys 'level', 'width', 'height', 'grid' (32×32 list of names) and
         additional fields 'door_orientation', 'stairs_orientation', 'stairs_direction'.  Each of these
         additional fields is a 32×32 grid where valid entries are strings ('horizontal', 'vertical', 'up', 'down')
         or ``None`` for non‑door and non‑stairs tiles.
         raw_tile_data_list: list of 2D arrays (height × width) of numeric tile codes (0..7)
         raw_presence_data_list: list of 2D boolean arrays (height × width) indicating if objects are present on each tile (bit 4 set)
+        wall_decorations: list of lists; each inner list contains the wall decoration IDs for that map, in the order defined by the map data
     """
     base_map_data_offset = 0x5250  # Start of global map data for DM1 PC
     level_info_list: List[dict] = []
     raw_tile_data: List[List[List[int]]] = []
     raw_presence_data: List[List[List[bool]]] = []
+    wall_decorations_list: List[List[int]] = []
     for map_index, mdef in enumerate(map_defs):
         start = base_map_data_offset + mdef['offset']
         w = mdef['width']
@@ -175,11 +182,23 @@ def parse_maps(
         raw_tile_data.append(tile_codes)
         raw_presence_data.append(presence)
         # skip creature graphics
-        skip_offset = start + w * h
-        skip_offset += mdef['creature_graphics_count']
-        skip_offset += mdef['wall_graphics_count']
-        skip_offset += mdef['floor_graphics_count']
-        skip_offset += mdef['door_decoration_count']
+        offset = start + w * h
+        # Skip creature graphics
+        offset += mdef['creature_graphics_count']
+        # Parse wall decoration graphics IDs for this map
+        wall_graphics_count = mdef['wall_graphics_count']
+        wall_decorations: List[int] = []
+        if wall_graphics_count > 0:
+            wall_decorations = list(data[offset : offset + wall_graphics_count])
+        else:
+            wall_decorations = []
+        offset += wall_graphics_count
+        # Skip floor decorations
+        offset += mdef['floor_graphics_count']
+        # Skip door decoration graphics
+        offset += mdef['door_decoration_count']
+        # Note: 'offset' is now at end of map's decoration lists, not used further here
+        wall_decorations_list.append(wall_decorations)
         # Build 32×32 grid of names (pad beyond width/height with 'wall')
         padded_grid: List[List[str]] = [[legend_map[0]] * 32 for _ in range(32)]
         for y in range(h):
@@ -196,7 +215,7 @@ def parse_maps(
             'stairs_orientation': [[stairs_orient[y][x] if (y < h and x < w) else None for x in range(32)] for y in range(32)],
             'stairs_direction': [[stairs_dir[y][x] if (y < h and x < w) else None for x in range(32)] for y in range(32)],
         })
-    return level_info_list, raw_tile_data, raw_presence_data
+    return level_info_list, raw_tile_data, raw_presence_data, wall_decorations_list
 
 
 def map_objects_to_tiles(
@@ -207,10 +226,11 @@ def map_objects_to_tiles(
     object_next_lookup: Dict[int, Tuple[int, int]],
     sensors_offset: int,
     sensor_count: int,
+    wall_decorations_list: List[List[int]],
     sensors_entry_size: int = 8,
     data: bytes = b"",
-) -> Tuple[List[dict], List[dict]]:
-    """Map sensors to tiles and classify pressure plates and buttons.
+) -> Tuple[List[dict], List[dict], List[dict]]:
+    """Map sensors to tiles and classify pressure plates, buttons, and fountains.
 
     Parameters
     ----------
@@ -234,12 +254,14 @@ def map_objects_to_tiles(
 
     Returns
     -------
-    (pressure_plates, buttons)
+    (pressure_plates, buttons, fountains)
         pressure_plates: list of dicts with keys 'level', 'x', 'y', 'type'
         buttons: list of dicts with keys 'level', 'x', 'y', 'direction', 'type'
+        fountains: list of dicts with keys 'level', 'x', 'y', 'direction'
     """
     pressure_plates: List[dict] = []
     buttons: List[dict] = []
+    fountains: List[dict] = []
     # Build mapping of tile coordinates that have objects (bit 4 set)
     tiles_with_objects: List[Tuple[int, int, int]] = []  # (level_idx, x, y)
     # Iterate through maps in order
@@ -310,6 +332,29 @@ def map_objects_to_tiles(
                         'direction': direction,
                         'type': sensor_type,
                     })
+                # Decoration sensors: wall sensor type 0 can display a decoration.
+                # If sensor_type == 0, check decoration ordinal and map to fountain if applicable.
+                if sensor_type == 0 and is_wall:
+                    # Read third word of sensor (offset +4) to get decoration ordinal bits 15-12
+                    dec_word = read_word_le(data, sensor_offset + 4)
+                    decoration_ordinal = (dec_word >> 12) & 0xF
+                    # decoration_ordinal == 0 means no decoration; ordinal 1 corresponds to index 0 in wall_decorations list
+                    if decoration_ordinal > 0:
+                        # Get wall decorations list for current map (level_idx)
+                        wall_decorations = wall_decorations_list[level_idx] if level_idx < len(wall_decorations_list) else []
+                        index = decoration_ordinal - 1
+                        if index < len(wall_decorations):
+                            decoration_id = wall_decorations[index]
+                            # Decoration ID 35 corresponds to 'Fountain' according to DM1 graphics list
+                            if decoration_id == 35:
+                                direction_map = {0: 'north', 1: 'east', 2: 'south', 3: 'west'}
+                                direction = direction_map.get(pos_bits, 'north')
+                                fountains.append({
+                                    'level': map_defs[level_idx]['level'],
+                                    'x': x,
+                                    'y': y,
+                                    'direction': direction,
+                                })
             # Find next object ID
             # Determine which list to index based on category
             if category not in object_next_lookup:
@@ -320,7 +365,7 @@ def map_objects_to_tiles(
             if next_id == 0xFFFF or next_id == 0xFFFE:
                 break
             current_id = next_id
-    return pressure_plates, buttons
+    return pressure_plates, buttons, fountains
 
 
 def main():
@@ -350,7 +395,8 @@ def main():
         6: 'trick_wall',
         7: 'empty',
     }
-    level_info_list, raw_tile_data, raw_presence_data = parse_maps(data, map_defs, legend_map)
+    # Parse maps: this also returns the list of wall decorations for each map
+    level_info_list, raw_tile_data, raw_presence_data, wall_decorations_list = parse_maps(data, map_defs, legend_map)
     # Prepare output directory
     os.makedirs(args.output_dir, exist_ok=True)
     # Write each level to JSON
@@ -385,7 +431,7 @@ def main():
     # Number of sensors = number of sensors in sensors list (684 sensors)
     sensors_offset = 0x27D4
     sensor_count = 684
-    pressure_plates, buttons = map_objects_to_tiles(
+    pressure_plates, buttons, fountains = map_objects_to_tiles(
         raw_tile_data,
         raw_presence_data,
         map_defs,
@@ -393,6 +439,7 @@ def main():
         object_next_lookup,
         sensors_offset,
         sensor_count,
+        wall_decorations_list,
         data=data,
     )
     # Decode starting position
@@ -414,6 +461,7 @@ def main():
         'starting_position': starting_position,
         'pressure_plates': pressure_plates,
         'buttons': buttons,
+        'fountains': fountains,
     })
     with open(os.path.join(args.output_dir, 'legend.json'), 'w', encoding='utf-8') as f:
         json.dump(legend_json, f, indent=2)

@@ -105,7 +105,14 @@ def load_overlays(asset_dir: str) -> Dict[str, Image.Image]:
         Missing overlays are mapped to ``None`` instead of raising an error.
     """
     overlays: Dict[str, Image.Image] = {}
-    for name in ["pressure_plate", "button", "stairs_up", "stairs_down"]:
+    # List of overlay names to attempt to load.  If an overlay is missing, its value will be None.
+    for name in [
+        "pressure_plate",
+        "button",
+        "stairs_up",
+        "stairs_down",
+        "fountain",
+    ]:
         filename = f"{name}.png"
         path = os.path.join(asset_dir, filename)
         if os.path.isfile(path):
@@ -147,6 +154,7 @@ def render_level(
     overlays: Dict[str, Image.Image],
     plates_by_level: Dict[int, List[dict]],
     buttons_by_level: Dict[int, List[dict]],
+    fountains_by_level: Dict[int, List[dict]],
     output_dir: str,
 ) -> str:
     """Render a single map into a PNG image.
@@ -329,6 +337,30 @@ def render_level(
             dx = x * tile_size + (tile_size - rotated.width) // 2
             dy = y * tile_size + (tile_size - rotated.height) // 2
             canvas.alpha_composite(rotated, (dx, dy))
+    # Overlay fountains
+    fountain_icon = overlays.get("fountain")
+    if fountain_icon:
+        fountains = fountains_by_level.get(level_num, [])
+        for fountain in fountains:
+            x, y = fountain.get("x"), fountain.get("y")
+            direction = fountain.get("direction", "north")
+            if x is None or y is None:
+                continue
+            # Compute rotation based on direction (same as buttons)
+            angle = 0
+            direction_lower = str(direction).lower()
+            if direction_lower == "east":
+                angle = -90
+            elif direction_lower == "south":
+                angle = 180
+            elif direction_lower == "west":
+                angle = 90
+            else:
+                angle = 0
+            rotated = fountain_icon.rotate(angle, expand=True)
+            dx = x * tile_size + (tile_size - rotated.width) // 2
+            dy = y * tile_size + (tile_size - rotated.height) // 2
+            canvas.alpha_composite(rotated, (dx, dy))
     # Add a black border around the map.  A fixed border of 50 pixels is drawn
     # on all four sides of the image.  To change the border thickness, adjust
     # the ``border_size`` value below.
@@ -376,6 +408,7 @@ def main():
     # Build per‑level lookup for plates and buttons
     plates_by_level = index_by_level(legend_data.get("pressure_plates", []))
     buttons_by_level = index_by_level(legend_data.get("buttons", []))
+    fountains_by_level = index_by_level(legend_data.get("fountains", []))
     # Render each level JSON file
     level_files = [
         f
@@ -398,6 +431,7 @@ def main():
             overlays=overlay_icons,
             plates_by_level=plates_by_level,
             buttons_by_level=buttons_by_level,
+            fountains_by_level=fountains_by_level,
             output_dir=args.output_dir,
         )
         print(f"Rendered level {level_data.get('level')} -> {saved_path}")
