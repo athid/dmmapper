@@ -1,24 +1,25 @@
+
 #!/usr/bin/env python3
 """
 render_dungeon.py
 ------------------
 
 This script renders Dungeon Master levels from JSON map data into PNG images.  It
-expects a directory containing one or more `level_XX.json` files (where XX is
-the level number) and a `legend.json` that describes the mapping of tile codes
+expects a directory containing one or more level_XX.json files (where XX is
+the level number) and a legend.json that describes the mapping of tile codes
 to human‑readable names as well as lists of pressure plates and buttons.  The
 script then composes each map into a single image by drawing a base tile image
 for every cell and layering overlay icons (pressure plates and buttons) on top.
 
 Tile images and overlays should be supplied as PNG files in the assets
-directory.  For each tile category listed in ``legend.json`` (for example
-``wall``, ``floor``, ``pit``, ``stairs``, ``door``, ``teleporter``,
-``trick_wall``, ``empty``) there must be a corresponding PNG file named
-``<category>.png`` in the assets directory.  Overlay icons should be named
-``pressure_plate.png`` and ``button.png``.  The base tile images must all
+directory.  For each tile category listed in legend.json (for example
+wall, floor, pit, stairs, door, teleporter,
+trick_wall, empty) there must be a corresponding PNG file named
+<category>.png in the assets directory.  Overlay icons should be named
+pressure_plate.png and button.png.  The base tile images must all
 be the same size; the first one loaded defines the tile width and height.
 
-Buttons are rotated to face the correct direction based on the ``direction``
+Buttons are rotated to face the correct direction based on the direction
 field in the legend: "north" (no rotation), "east" (90° clockwise), "south"
 (180°) and "west" (270°).  The rotated icon is centred within the tile.
 
@@ -31,23 +32,23 @@ Usage:
         --output_dir /path/to/output
 
 The script will create the output directory if it does not already exist and
-write one PNG per level, named ``level_XX.png`` where ``XX`` is the level
+write one PNG per level, named level_XX.png where XX is the level
 number padded to two digits.
 
-Note: This script depends on the Pillow library (``PIL``).  Pillow should be
+Note: This script depends on the Pillow library (PIL).  Pillow should be
 pre‑installed in this environment, but if you run it elsewhere you may need
-to ``pip install pillow`` first.
+to pip install pillow first.
 """
 
 import argparse
 import json
 import os
-from typing import Dict, List, Tuple
+import random
+from typing import Dict, List, Tuple, Union
 
 from PIL import Image  # type: ignore
 
-
-def load_base_tiles(asset_dir: str, legend: Dict[str, str]) -> Dict[str, Image.Image]:
+def load_base_tiles(asset_dir: str, legend: Dict[str, str]) -> Dict[str, Union[Image.Image, List[Image.Image]]]:
     """Load base tile images from the assets directory.
 
     Parameters
@@ -61,17 +62,44 @@ def load_base_tiles(asset_dir: str, legend: Dict[str, str]) -> Dict[str, Image.I
     Returns
     -------
     Dict[str, Image.Image]
-        A dictionary mapping tile names (e.g., ``'floor'``) to opened PIL
+        A dictionary mapping tile names (e.g., 'floor') to opened PIL
         images.  All images are converted to RGBA mode.  If any expected
-        asset is missing, a ``FileNotFoundError`` is raised.
+        asset is missing, a FileNotFoundError is raised.
     """
-    base_tiles: Dict[str, Image.Image] = {}
+    # Allow base tile entries to be either a single PIL Image or a list of
+    # Images.  Floors may have multiple variants (e.g. floor0.png,
+    # floor1.png, floor2.png, floor3.png) and will be stored as a list.
+    base_tiles: Dict[str, Union[Image.Image, List[Image.Image]]] = {}
     for code, name in legend.items():
         # skip non‑numeric keys like 'starting_position', 'pressure_plates', etc.
         if not code.isdigit():
             continue
         filename = f"{name}.png"
         path = os.path.join(asset_dir, filename)
+        # Special handling for floor: support multiple variants named
+        # floor0.png, floor1.png, floor2.png, floor3.png.  If any
+        # variant files exist, load them all and use them instead of
+        # floor.png.  Otherwise fall back to the single floor.png.
+        if name == "floor":
+            variant_images: List[Image.Image] = []
+            # Look for numbered variants floor0.png .. floor3.png
+            for i in range(4):
+                variant_name = f"floor{i}.png"
+                variant_path = os.path.join(asset_dir, variant_name)
+                if os.path.isfile(variant_path):
+                    variant_images.append(Image.open(variant_path).convert("RGBA"))
+            # If variants were found, use them
+            if variant_images:
+                base_tiles[name] = variant_images
+                # Ensure all variant images have the same dimensions
+                first_size = variant_images[0].size
+                for idx, img in enumerate(variant_images):
+                    if img.size != first_size:
+                        raise ValueError(
+                            f"All floor variant images must have the same dimensions; 'floor{idx}.png' is {img.size}, expected {first_size}"
+                        )
+                continue
+            # Otherwise fall back to single floor.png
         if not os.path.isfile(path):
             raise FileNotFoundError(
                 f"Expected base tile asset '{filename}' not found in {asset_dir}"
@@ -79,16 +107,29 @@ def load_base_tiles(asset_dir: str, legend: Dict[str, str]) -> Dict[str, Image.I
         img = Image.open(path).convert("RGBA")
         base_tiles[name] = img
     # Ensure all base tiles have the same dimensions
+    # Ensure all base tile images (and floor variants) have the same dimensions.
     if base_tiles:
-        first_size = next(iter(base_tiles.values())).size
-        for name, img in base_tiles.items():
-            if img.size != first_size:
-                raise ValueError(
-                    f"All base tile images must have the same dimensions; '{name}.png'"
-                    f" is {img.size}, expected {first_size}"
-                )
+        # Determine the reference size from the first image (or the first element of a list)
+        first_value = next(iter(base_tiles.values()))
+        if isinstance(first_value, list):
+            first_size = first_value[0].size
+        else:
+            first_size = first_value.size
+        for name, value in base_tiles.items():
+            if isinstance(value, list):
+                for idx, img in enumerate(value):
+                    if img.size != first_size:
+                        raise ValueError(
+                            f"All base tile images must have the same dimensions; '{name}{idx}.png'"
+                            f" is {img.size}, expected {first_size}"
+                        )
+            else:
+                if value.size != first_size:
+                    raise ValueError(
+                        f"All base tile images must have the same dimensions; '{name}.png'"
+                        f" is {value.size}, expected {first_size}"
+                    )
     return base_tiles
-
 
 def load_overlays(asset_dir: str) -> Dict[str, Image.Image]:
     """Load overlay icons from the assets directory.
@@ -102,7 +143,7 @@ def load_overlays(asset_dir: str) -> Dict[str, Image.Image]:
     -------
     Dict[str, Image.Image]
         A dictionary containing overlay images for 'pressure_plate' and 'button'.
-        Missing overlays are mapped to ``None`` instead of raising an error.
+        Missing overlays are mapped to None instead of raising an error.
     """
     overlays: Dict[str, Image.Image] = {}
     # List of overlay names to attempt to load.  If an overlay is missing, its value will be None.
@@ -120,7 +161,6 @@ def load_overlays(asset_dir: str) -> Dict[str, Image.Image]:
         else:
             overlays[name] = None
     return overlays
-
 
 def index_by_level(items: List[dict], level_key: str = "level") -> Dict[int, List[dict]]:
     """Index a list of dictionaries by their level.
@@ -147,7 +187,6 @@ def index_by_level(items: List[dict], level_key: str = "level") -> Dict[int, Lis
         indexed.setdefault(lvl, []).append(item)
     return indexed
 
-
 def render_level(
     level_data: dict,
     tile_map: Dict[str, Image.Image],
@@ -168,7 +207,7 @@ def render_level(
         Mapping from tile names (e.g., 'floor') to base tile images.
     overlays : Dict[str, Image.Image]
         Overlay icons mapping, may contain 'pressure_plate' and 'button'.  A
-        value of ``None`` means no overlay is available for that type.
+        value of None means no overlay is available for that type.
     plates_by_level : Dict[int, List[dict]]
         Mapping from level number to list of pressure plate dicts.  Each dict
         should contain keys 'level', 'x', 'y'.
@@ -189,10 +228,14 @@ def render_level(
     grid: List[List[str]] = level_data.get("grid")
     if grid is None:
         raise ValueError("Level data missing 'grid' key")
-    # Determine tile size from any tile image
+    # Determine tile size from any tile image.  Handle lists of images
     if not tile_map:
         raise ValueError("No base tiles loaded")
-    tile_size = next(iter(tile_map.values())).size[0]
+    first_value = next(iter(tile_map.values()))
+    if isinstance(first_value, list):
+        tile_size = first_value[0].size[0]
+    else:
+        tile_size = first_value.size[0]
     height = len(grid)
     width = len(grid[0]) if height > 0 else 0
     # Orientation grid for doors (optional)
@@ -209,9 +252,14 @@ def render_level(
         for x in range(width):
             tile_type = grid[y][x]
             # Base image for tile
-            base_img = tile_map.get(tile_type, tile_map.get('wall'))
-            if base_img is None:
+            base_entry = tile_map.get(tile_type, tile_map.get('wall'))
+            if base_entry is None:
                 raise ValueError(f"No base image found for tile type '{tile_type}'")
+            # If there are multiple variants (list), choose one at random
+            if isinstance(base_entry, list):
+                base_img = random.choice(base_entry)
+            else:
+                base_img = base_entry
             # Handle door orientation
             if tile_type == 'door':
                 orientation = None
@@ -363,7 +411,7 @@ def render_level(
             canvas.alpha_composite(rotated, (dx, dy))
     # Add a black border around the map.  A fixed border of 50 pixels is drawn
     # on all four sides of the image.  To change the border thickness, adjust
-    # the ``border_size`` value below.
+    # the border_size value below.
     border_size = 50
     if border_size > 0:
         bordered_width = img_width + border_size * 2
@@ -378,7 +426,6 @@ def render_level(
     output_path = os.path.join(output_dir, f"level_{level_num:02d}.png")
     canvas.save(output_path)
     return output_path
-
 
 def main():
     parser = argparse.ArgumentParser(description="Render Dungeon Master levels to PNG images.")
@@ -435,7 +482,6 @@ def main():
             output_dir=args.output_dir,
         )
         print(f"Rendered level {level_data.get('level')} -> {saved_path}")
-
 
 if __name__ == "__main__":
     main()

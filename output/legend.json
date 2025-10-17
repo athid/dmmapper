@@ -3158,5 +3158,25 @@
       "direction": "south",
       "type": 4
     }
+  ],
+  "fountains": [
+    {
+      "level": 1,
+      "x": 6,
+      "y": 30,
+      "direction": "north"
+    },
+    {
+      "level": 8,
+      "x": 1,
+      "y": 28,
+      "direction": "west"
+    },
+    {
+      "level": 8,
+      "x": 12,
+      "y": 16,
+      "direction": "south"
+    }
   ]
 }
