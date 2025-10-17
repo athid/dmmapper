@@ -3178,5 +3178,3917 @@
       "y": 16,
       "direction": "south"
     }
+  ],
+  "weapons": [
+    {
+      "level": 0,
+      "x": 3,
+      "y": 14,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 8,
+      "type": 151,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 14,
+      "type": 160,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 14,
+      "type": 160,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 14,
+      "type": 160,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 17,
+      "type": 136,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 17,
+      "type": 136,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 10,
+      "y": 3,
+      "type": 141,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 10,
+      "y": 6,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 10,
+      "y": 13,
+      "type": 15523,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 11,
+      "y": 11,
+      "type": 159,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 11,
+      "y": 11,
+      "type": 159,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 11,
+      "y": 16,
+      "type": 146,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 12,
+      "y": 8,
+      "type": 153,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 15,
+      "y": 12,
+      "type": 138,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 16,
+      "y": 4,
+      "type": 155,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 16,
+      "y": 4,
+      "type": 155,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 16,
+      "y": 7,
+      "type": 157,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 17,
+      "y": 10,
+      "type": 162,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 4,
+      "y": 16,
+      "type": 158,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 5,
+      "y": 29,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 6,
+      "y": 0,
+      "type": 151,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 6,
+      "y": 3,
+      "type": 136,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 6,
+      "y": 4,
+      "type": 137,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 8,
+      "y": 5,
+      "type": 155,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 8,
+      "y": 5,
+      "type": 136,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 8,
+      "y": 5,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 12,
+      "y": 30,
+      "type": 160,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 13,
+      "y": 8,
+      "type": 137,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 13,
+      "y": 14,
+      "type": 160,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 15,
+      "y": 8,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 15,
+      "y": 13,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 16,
+      "y": 28,
+      "type": 137,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 29,
+      "y": 11,
+      "type": 158,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 30,
+      "y": 26,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 0,
+      "y": 10,
+      "type": 140,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 0,
+      "y": 17,
+      "type": 15523,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 1,
+      "y": 21,
+      "type": 155,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 7,
+      "y": 6,
+      "type": 155,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 8,
+      "y": 28,
+      "type": 155,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 13,
+      "y": 1,
+      "type": 155,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 23,
+      "y": 23,
+      "type": 155,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 28,
+      "y": 29,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 29,
+      "y": 12,
+      "type": 157,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 29,
+      "y": 26,
+      "type": 138,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 31,
+      "y": 29,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 0,
+      "y": 8,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 6,
+      "y": 6,
+      "type": 171,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 10,
+      "y": 9,
+      "type": 153,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 10,
+      "y": 12,
+      "type": 139,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 20,
+      "y": 17,
+      "type": 15524,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 23,
+      "y": 31,
+      "type": 146,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 2,
+      "y": 27,
+      "type": 159,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 2,
+      "y": 27,
+      "type": 159,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 7,
+      "y": 14,
+      "type": 159,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 12,
+      "y": 29,
+      "type": 148,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 13,
+      "y": 17,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 22,
+      "y": 6,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 27,
+      "y": 28,
+      "type": 136,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 28,
+      "y": 3,
+      "type": 132,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 3,
+      "y": 12,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 7,
+      "y": 16,
+      "type": 144,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 10,
+      "y": 2,
+      "type": 13442,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 11,
+      "y": 25,
+      "type": 154,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 13,
+      "y": 13,
+      "type": 156,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 13,
+      "y": 13,
+      "type": 156,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 17,
+      "y": 6,
+      "type": 160,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 17,
+      "y": 6,
+      "type": 160,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 22,
+      "y": 23,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 23,
+      "y": 5,
+      "type": 10405,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 24,
+      "y": 0,
+      "type": 14480,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 4,
+      "y": 19,
+      "type": 145,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 7,
+      "y": 3,
+      "type": 14469,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 9,
+      "y": 4,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 13,
+      "y": 4,
+      "type": 158,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 14,
+      "y": 16,
+      "type": 135,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 15,
+      "y": 3,
+      "type": 10409,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 19,
+      "y": 3,
+      "type": 15530,
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 9,
+      "y": 27,
+      "type": 142,
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 14,
+      "y": 27,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 30,
+      "y": 6,
+      "type": 15526,
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 30,
+      "y": 20,
+      "type": 149,
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 1,
+      "y": 11,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 1,
+      "y": 11,
+      "type": 4225,
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 3,
+      "y": 2,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 23,
+      "y": 23,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 0,
+      "y": 21,
+      "type": 172,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 16,
+      "y": 17,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 20,
+      "y": 15,
+      "type": 12453,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 26,
+      "y": 0,
+      "type": 147,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 0,
+      "y": 14,
+      "type": 143,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 3,
+      "y": 3,
+      "type": 162,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 3,
+      "y": 6,
+      "type": 140,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 6,
+      "y": 6,
+      "type": 150,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 12,
+      "y": 3,
+      "type": 8326,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 0,
+      "y": 26,
+      "type": 15527,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 3,
+      "y": 2,
+      "type": 150,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 19,
+      "y": 15,
+      "type": 15490,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 29,
+      "y": 2,
+      "type": 156,
+      "charges": 1
+    },
+    {
+      "level": 12,
+      "x": 18,
+      "y": 2,
+      "type": 7299,
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 22,
+      "y": 10,
+      "type": 5248,
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 24,
+      "y": 3,
+      "type": 173,
+      "charges": 1
+    }
+  ],
+  "clothes": [
+    {
+      "level": 0,
+      "x": 7,
+      "y": 8,
+      "type": 131,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 8,
+      "type": 130,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 8,
+      "type": 153,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 14,
+      "type": 138,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 14,
+      "type": 139,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 14,
+      "type": 131,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 17,
+      "type": 130,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 17,
+      "type": 157,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 7,
+      "y": 17,
+      "type": 185,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 8,
+      "y": 7,
+      "type": 131,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 8,
+      "y": 7,
+      "type": 133,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 8,
+      "y": 7,
+      "type": 134,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 8,
+      "y": 14,
+      "type": 144,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 8,
+      "y": 14,
+      "type": 145,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 8,
+      "y": 14,
+      "type": 132,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 9,
+      "y": 10,
+      "type": 141,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 9,
+      "y": 10,
+      "type": 139,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 10,
+      "y": 3,
+      "type": 149,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 10,
+      "y": 3,
+      "type": 150,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 10,
+      "y": 6,
+      "type": 160,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 10,
+      "y": 6,
+      "type": 147,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 10,
+      "y": 6,
+      "type": 165,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 10,
+      "y": 13,
+      "type": 137,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 10,
+      "y": 13,
+      "type": 131,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 10,
+      "y": 13,
+      "type": 140,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 11,
+      "y": 11,
+      "type": 144,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 11,
+      "y": 11,
+      "type": 147,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 11,
+      "y": 11,
+      "type": 132,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 11,
+      "y": 13,
+      "type": 144,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 11,
+      "y": 16,
+      "type": 148,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 11,
+      "y": 16,
+      "type": 145,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 11,
+      "y": 16,
+      "type": 146,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 12,
+      "y": 8,
+      "type": 141,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 12,
+      "y": 8,
+      "type": 142,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 12,
+      "y": 8,
+      "type": 143,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 13,
+      "y": 11,
+      "type": 145,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 13,
+      "y": 11,
+      "type": 138,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 13,
+      "y": 11,
+      "type": 132,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 2,
+      "type": 140,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 2,
+      "type": 138,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 2,
+      "type": 131,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 7,
+      "type": 148,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 7,
+      "type": 145,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 7,
+      "type": 132,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 14,
+      "type": 133,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 14,
+      "type": 134,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 14,
+      "type": 131,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 15,
+      "y": 12,
+      "type": 140,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 15,
+      "y": 12,
+      "type": 131,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 15,
+      "y": 12,
+      "type": 185,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 16,
+      "y": 4,
+      "type": 145,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 16,
+      "y": 4,
+      "type": 146,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 16,
+      "y": 4,
+      "type": 144,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 16,
+      "y": 7,
+      "type": 144,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 16,
+      "y": 7,
+      "type": 146,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 16,
+      "y": 7,
+      "type": 145,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 16,
+      "y": 16,
+      "type": 129,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 17,
+      "y": 10,
+      "type": 148,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 17,
+      "y": 10,
+      "type": 147,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 17,
+      "y": 10,
+      "type": 131,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 5,
+      "y": 18,
+      "type": 156,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 7,
+      "y": 9,
+      "type": 132,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 8,
+      "y": 5,
+      "type": 141,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 14,
+      "y": 8,
+      "type": 132,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 15,
+      "y": 10,
+      "type": 150,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 19,
+      "y": 11,
+      "type": 145,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 0,
+      "y": 10,
+      "type": 136,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 0,
+      "y": 10,
+      "type": 135,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 4,
+      "y": 14,
+      "type": 145,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 7,
+      "y": 10,
+      "type": 158,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 7,
+      "y": 22,
+      "type": 144,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 9,
+      "y": 28,
+      "type": 144,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 9,
+      "y": 28,
+      "type": 145,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 9,
+      "y": 28,
+      "type": 146,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 9,
+      "y": 28,
+      "type": 153,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 19,
+      "y": 4,
+      "type": 142,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 19,
+      "y": 5,
+      "type": 154,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 26,
+      "y": 17,
+      "type": 153,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 27,
+      "y": 26,
+      "type": 160,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 0,
+      "y": 8,
+      "type": 165,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 1,
+      "y": 22,
+      "type": 143,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 2,
+      "y": 23,
+      "type": 161,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 16,
+      "y": 0,
+      "type": 145,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 16,
+      "y": 0,
+      "type": 144,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 18,
+      "y": 2,
+      "type": 155,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 23,
+      "y": 11,
+      "type": 159,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 3,
+      "y": 27,
+      "type": 154,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 20,
+      "y": 4,
+      "type": 170,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 25,
+      "y": 6,
+      "type": 164,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 27,
+      "y": 29,
+      "type": 154,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 27,
+      "y": 29,
+      "type": 160,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 27,
+      "y": 29,
+      "type": 161,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 27,
+      "y": 29,
+      "type": 165,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 10,
+      "y": 16,
+      "type": 170,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 13,
+      "y": 13,
+      "type": 162,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 19,
+      "y": 27,
+      "type": 163,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 21,
+      "y": 21,
+      "type": 160,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 27,
+      "y": 4,
+      "type": 164,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 29,
+      "y": 14,
+      "type": 167,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 7,
+      "y": 3,
+      "type": 182,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 11,
+      "y": 3,
+      "type": 152,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 15,
+      "y": 3,
+      "type": 184,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 6,
+      "y": 26,
+      "type": 166,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 14,
+      "y": 25,
+      "type": 168,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 14,
+      "y": 25,
+      "type": 169,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 15,
+      "y": 26,
+      "type": 184,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 17,
+      "y": 26,
+      "type": 167,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 23,
+      "y": 6,
+      "type": 175,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 0,
+      "y": 31,
+      "type": 172,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 0,
+      "y": 31,
+      "type": 173,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 0,
+      "y": 31,
+      "type": 174,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 6,
+      "y": 3,
+      "type": 169,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 24,
+      "y": 26,
+      "type": 184,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 21,
+      "y": 28,
+      "type": 177,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 23,
+      "y": 13,
+      "type": 171,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 23,
+      "y": 28,
+      "type": 178,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 24,
+      "y": 14,
+      "type": 184,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 28,
+      "y": 0,
+      "type": 176,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 29,
+      "y": 30,
+      "type": 179,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 30,
+      "y": 28,
+      "type": 180,
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 22,
+      "y": 8,
+      "type": 151,
+      "charges": 1
+    }
+  ],
+  "scrolls": [
+    {
+      "level": 0,
+      "x": 4,
+      "y": 15,
+      "type": 1057,
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 4,
+      "y": 18,
+      "type": 1145,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 6,
+      "y": 3,
+      "type": 1133,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 19,
+      "y": 11,
+      "type": 1059,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 19,
+      "y": 11,
+      "type": 1060,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 27,
+      "y": 27,
+      "type": 1130,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 26,
+      "y": 20,
+      "type": 1070,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 26,
+      "y": 20,
+      "type": 1048,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 6,
+      "y": 2,
+      "type": 1100,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 6,
+      "y": 2,
+      "type": 1107,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 6,
+      "y": 2,
+      "type": 1109,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 23,
+      "y": 3,
+      "type": 1104,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 25,
+      "y": 20,
+      "type": 1148,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 28,
+      "y": 8,
+      "type": 1114,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 28,
+      "y": 8,
+      "type": 1116,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 28,
+      "y": 8,
+      "type": 1121,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 28,
+      "y": 8,
+      "type": 1122,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 28,
+      "y": 8,
+      "type": 1124,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 28,
+      "y": 23,
+      "type": 1073,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 28,
+      "y": 24,
+      "type": 1074,
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 15,
+      "y": 28,
+      "type": 1080,
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 10,
+      "y": 23,
+      "type": 1086,
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 18,
+      "y": 14,
+      "type": 1087,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 22,
+      "y": 30,
+      "type": 1088,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 23,
+      "y": 6,
+      "type": 1089,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 15,
+      "y": 25,
+      "type": 1136,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 28,
+      "y": 7,
+      "type": 1090,
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 23,
+      "y": 4,
+      "type": 1068,
+      "charges": 1
+    }
+  ],
+  "potions": [
+    {
+      "level": 0,
+      "x": 11,
+      "y": 13,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 19,
+      "y": 11,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 19,
+      "y": 11,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 19,
+      "y": 11,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 27,
+      "y": 26,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 27,
+      "y": 27,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 3,
+      "y": 18,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 6,
+      "y": 6,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 6,
+      "y": 18,
+      "type": 35200,
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 14,
+      "y": 6,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 5,
+      "y": 7,
+      "type": 34944,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 9,
+      "y": 3,
+      "type": 34688,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 9,
+      "y": 7,
+      "type": 33656,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 9,
+      "y": 7,
+      "type": 33776,
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 9,
+      "y": 8,
+      "type": 33576,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 7,
+      "y": 2,
+      "type": 33596,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 11,
+      "y": 1,
+      "type": 35428,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 22,
+      "y": 23,
+      "type": 36480,
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 22,
+      "y": 23,
+      "type": 34432,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 3,
+      "y": 2,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 3,
+      "y": 2,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 3,
+      "y": 2,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 4,
+      "y": 18,
+      "type": 33791,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 4,
+      "y": 18,
+      "type": 37887,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 17,
+      "y": 4,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 21,
+      "y": 4,
+      "type": 36608,
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 6,
+      "y": 17,
+      "type": 37760,
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 11,
+      "y": 23,
+      "type": 37852,
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 30,
+      "y": 21,
+      "type": 37752,
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 30,
+      "y": 21,
+      "type": 37752,
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 18,
+      "y": 14,
+      "type": 37888,
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 23,
+      "y": 20,
+      "type": 36552,
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 23,
+      "y": 20,
+      "type": 36472,
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 28,
+      "y": 0,
+      "type": 36402,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 17,
+      "y": 26,
+      "type": 37760,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 25,
+      "y": 17,
+      "type": 37832,
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 25,
+      "y": 17,
+      "type": 36608,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 25,
+      "y": 27,
+      "type": 37852,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 25,
+      "y": 28,
+      "type": 37852,
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 26,
+      "y": 29,
+      "type": 33756,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 21,
+      "y": 12,
+      "type": 37832,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 27,
+      "y": 0,
+      "type": 37832,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 27,
+      "y": 12,
+      "type": 33791,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 28,
+      "y": 7,
+      "type": 36040,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 28,
+      "y": 7,
+      "type": 36552,
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 28,
+      "y": 7,
+      "type": 36608,
+      "charges": 1
+    }
+  ],
+  "containers": [
+    {
+      "level": 1,
+      "x": 2,
+      "y": 31,
+      "type": "chest",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 0,
+      "y": 26,
+      "type": "chest",
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 28,
+      "y": 0,
+      "type": "chest",
+      "charges": 1
+    }
+  ],
+  "misc_items": [
+    {
+      "level": 0,
+      "x": 0,
+      "y": 16,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 2,
+      "y": 11,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 2,
+      "y": 12,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 2,
+      "y": 13,
+      "type": 159,
+      "name": "water",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 4,
+      "y": 9,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 5,
+      "y": 11,
+      "type": 159,
+      "name": "water",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 8,
+      "y": 7,
+      "type": 170,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 9,
+      "y": 10,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 13,
+      "y": 11,
+      "type": 173,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 2,
+      "type": 167,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 7,
+      "type": 174,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 14,
+      "type": 159,
+      "name": "water",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 14,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 14,
+      "y": 14,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 0,
+      "x": 15,
+      "y": 12,
+      "type": 176,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 0,
+      "y": 2,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 1,
+      "y": 9,
+      "type": 147,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 6,
+      "y": 3,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 6,
+      "y": 3,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 7,
+      "y": 9,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 8,
+      "y": 3,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 8,
+      "y": 5,
+      "type": 149,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 13,
+      "y": 5,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 13,
+      "y": 14,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 14,
+      "y": 7,
+      "type": 139,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 14,
+      "y": 28,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 15,
+      "y": 10,
+      "type": 137,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 15,
+      "y": 31,
+      "type": 170,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 16,
+      "y": 13,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 16,
+      "y": 13,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 16,
+      "y": 13,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 17,
+      "y": 11,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 19,
+      "y": 11,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 25,
+      "y": 0,
+      "type": 153,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 30,
+      "y": 1,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 30,
+      "y": 1,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 30,
+      "y": 19,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 31,
+      "y": 6,
+      "type": 137,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 1,
+      "x": 31,
+      "y": 10,
+      "type": 138,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 0,
+      "y": 10,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 1,
+      "y": 2,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 3,
+      "y": 13,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 3,
+      "y": 13,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 3,
+      "y": 13,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 3,
+      "y": 13,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 3,
+      "y": 15,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 3,
+      "y": 28,
+      "type": 128,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 4,
+      "y": 18,
+      "type": 159,
+      "name": "water",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 5,
+      "y": 17,
+      "type": 135,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 7,
+      "y": 10,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 7,
+      "y": 22,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 7,
+      "y": 22,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 7,
+      "y": 22,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 8,
+      "y": 28,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 8,
+      "y": 28,
+      "type": 129,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 9,
+      "y": 10,
+      "type": 159,
+      "name": "water",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 12,
+      "y": 19,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 17,
+      "y": 28,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 22,
+      "y": 5,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 23,
+      "y": 12,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 24,
+      "y": 4,
+      "type": 174,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 25,
+      "y": 17,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 26,
+      "y": 1,
+      "type": 154,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 26,
+      "y": 1,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 27,
+      "y": 9,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 27,
+      "y": 11,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 27,
+      "y": 17,
+      "type": 159,
+      "name": "water",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 27,
+      "y": 19,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 28,
+      "y": 30,
+      "type": 151,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 29,
+      "y": 26,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 29,
+      "y": 26,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 31,
+      "y": 30,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 31,
+      "y": 30,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 31,
+      "y": 30,
+      "type": 159,
+      "name": "water",
+      "charges": 1
+    },
+    {
+      "level": 2,
+      "x": 31,
+      "y": 30,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 0,
+      "y": 8,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 6,
+      "y": 18,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 10,
+      "y": 8,
+      "type": 136,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 10,
+      "y": 30,
+      "type": 145,
+      "name": "food",
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 12,
+      "y": 21,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 12,
+      "y": 21,
+      "type": 170,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 23,
+      "y": 31,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 3,
+      "x": 25,
+      "y": 23,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 3,
+      "y": 27,
+      "type": 154,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 5,
+      "y": 7,
+      "type": 154,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 5,
+      "y": 27,
+      "type": 174,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 5,
+      "y": 27,
+      "type": 136,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 7,
+      "y": 19,
+      "type": 172,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 11,
+      "y": 8,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 12,
+      "y": 28,
+      "type": 166,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 12,
+      "y": 29,
+      "type": 154,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 15,
+      "y": 19,
+      "type": 136,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 21,
+      "y": 6,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 23,
+      "y": 10,
+      "type": 131,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 24,
+      "y": 27,
+      "type": 165,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 28,
+      "y": 12,
+      "type": 176,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 4,
+      "x": 28,
+      "y": 12,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 1,
+      "y": 6,
+      "type": 170,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 6,
+      "y": 10,
+      "type": 171,
+      "name": "rope",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 6,
+      "y": 10,
+      "type": 171,
+      "name": "rope",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 11,
+      "y": 1,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 13,
+      "y": 12,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 13,
+      "y": 19,
+      "type": 137,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 13,
+      "y": 29,
+      "type": 137,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 17,
+      "y": 0,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 17,
+      "y": 6,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 20,
+      "y": 3,
+      "type": 139,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 21,
+      "y": 16,
+      "type": 137,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 21,
+      "y": 21,
+      "type": 137,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 22,
+      "y": 23,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 23,
+      "y": 10,
+      "type": 171,
+      "name": "rope",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 24,
+      "y": 6,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 24,
+      "y": 6,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 29,
+      "y": 14,
+      "type": 137,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 5,
+      "x": 29,
+      "y": 28,
+      "type": 170,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 0,
+      "y": 1,
+      "type": 146,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 4,
+      "y": 15,
+      "type": 171,
+      "name": "rope",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 5,
+      "y": 0,
+      "type": 178,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 5,
+      "y": 0,
+      "type": 175,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 5,
+      "y": 0,
+      "type": 155,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 11,
+      "y": 3,
+      "type": 171,
+      "name": "rope",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 13,
+      "y": 4,
+      "type": 153,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 19,
+      "y": 3,
+      "type": 131,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 19,
+      "y": 3,
+      "type": 165,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 22,
+      "y": 27,
+      "type": 171,
+      "name": "rope",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 26,
+      "y": 5,
+      "type": 141,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 26,
+      "y": 5,
+      "type": 132,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 28,
+      "y": 8,
+      "type": 151,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 28,
+      "y": 24,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 6,
+      "x": 28,
+      "y": 24,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 1,
+      "y": 8,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 1,
+      "y": 8,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 2,
+      "y": 11,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 6,
+      "y": 17,
+      "type": 174,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 11,
+      "y": 23,
+      "type": 171,
+      "name": "rope",
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 12,
+      "y": 26,
+      "type": 130,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 16,
+      "y": 28,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 7,
+      "x": 20,
+      "y": 2,
+      "type": 139,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 1,
+      "y": 7,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 1,
+      "y": 7,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 1,
+      "y": 7,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 1,
+      "y": 7,
+      "type": 164,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 1,
+      "y": 11,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 3,
+      "y": 1,
+      "type": 175,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 11,
+      "y": 16,
+      "type": 151,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 16,
+      "y": 1,
+      "type": 173,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 18,
+      "y": 25,
+      "type": 169,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 19,
+      "y": 25,
+      "type": 170,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 8,
+      "x": 23,
+      "y": 23,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 0,
+      "y": 2,
+      "type": 159,
+      "name": "water",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 0,
+      "y": 2,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 3,
+      "y": 12,
+      "type": 138,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 5,
+      "y": 21,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 5,
+      "y": 21,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 12,
+      "y": 27,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 12,
+      "y": 27,
+      "type": 167,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 14,
+      "y": 27,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 17,
+      "y": 16,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 18,
+      "y": 3,
+      "type": 178,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 25,
+      "y": 17,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 28,
+      "y": 11,
+      "type": 159,
+      "name": "water",
+      "charges": 1
+    },
+    {
+      "level": 9,
+      "x": 28,
+      "y": 30,
+      "type": 159,
+      "name": "water",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 2,
+      "y": 18,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 6,
+      "y": 0,
+      "type": 137,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 6,
+      "y": 22,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 7,
+      "y": 15,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 11,
+      "y": 19,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 18,
+      "y": 16,
+      "type": 160,
+      "name": "copper_coin",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 19,
+      "y": 11,
+      "type": 142,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 22,
+      "y": 14,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 22,
+      "y": 19,
+      "type": 150,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 25,
+      "y": 4,
+      "type": 144,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 25,
+      "y": 27,
+      "type": 171,
+      "name": "rope",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 26,
+      "y": 20,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 26,
+      "y": 26,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 26,
+      "y": 26,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 27,
+      "y": 26,
+      "type": 142,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 28,
+      "y": 4,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 10,
+      "x": 28,
+      "y": 28,
+      "type": 171,
+      "name": "rope",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 1,
+      "y": 13,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 1,
+      "y": 23,
+      "type": 151,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 7,
+      "y": 4,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 7,
+      "y": 4,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 11,
+      "y": 12,
+      "type": 152,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 16,
+      "y": 30,
+      "type": 158,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 16,
+      "y": 30,
+      "type": 159,
+      "name": "water",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 18,
+      "y": 28,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 19,
+      "y": 15,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 19,
+      "y": 15,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 19,
+      "y": 21,
+      "type": 147,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 23,
+      "y": 14,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 28,
+      "y": 7,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 29,
+      "y": 0,
+      "type": 144,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 29,
+      "y": 2,
+      "type": 163,
+      "name": "silver_coin",
+      "charges": 1
+    },
+    {
+      "level": 11,
+      "x": 29,
+      "y": 2,
+      "type": 157,
+      "name": "gold_coin",
+      "charges": 1
+    },
+    {
+      "level": 12,
+      "x": 18,
+      "y": 2,
+      "type": 168,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 9,
+      "y": 10,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 10,
+      "y": 7,
+      "type": 135,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 10,
+      "y": 11,
+      "type": 135,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 12,
+      "y": 6,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 12,
+      "y": 10,
+      "type": 153,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 12,
+      "y": 12,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 13,
+      "y": 9,
+      "type": 135,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 13,
+      "y": 9,
+      "type": 153,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 14,
+      "y": 8,
+      "type": 132,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 15,
+      "y": 7,
+      "type": 153,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 15,
+      "y": 10,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 16,
+      "y": 9,
+      "type": 132,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 17,
+      "y": 10,
+      "type": 132,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 18,
+      "y": 8,
+      "type": 140,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 18,
+      "y": 8,
+      "type": 132,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 18,
+      "y": 11,
+      "type": 153,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 19,
+      "y": 7,
+      "type": 153,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 19,
+      "y": 10,
+      "type": 132,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 19,
+      "y": 11,
+      "type": 132,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 20,
+      "y": 8,
+      "type": 132,
+      "name": "torch",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 22,
+      "y": 8,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 22,
+      "y": 8,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 22,
+      "y": 8,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 22,
+      "y": 8,
+      "type": 136,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 22,
+      "y": 10,
+      "type": 154,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 22,
+      "y": 10,
+      "type": 156,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 22,
+      "y": 10,
+      "type": 156,
+      "name": "special_key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 23,
+      "y": 1,
+      "type": 134,
+      "name": "key",
+      "charges": 1
+    },
+    {
+      "level": 13,
+      "x": 23,
+      "y": 6,
+      "type": 135,
+      "name": "special_key",
+      "charges": 1
+    }
   ]
 }

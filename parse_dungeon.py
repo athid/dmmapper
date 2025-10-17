@@ -229,8 +229,8 @@ def map_objects_to_tiles(
     wall_decorations_list: List[List[int]],
     sensors_entry_size: int = 8,
     data: bytes = b"",
-) -> Tuple[List[dict], List[dict], List[dict]]:
-    """Map sensors to tiles and classify pressure plates, buttons, and fountains.
+) -> Tuple[List[dict], List[dict], List[dict], List[dict], List[dict], List[dict], List[dict], List[dict], List[dict]]:
+    """Map objects to tiles and classify pressure plates, buttons, fountains, items, and monsters.
 
     Parameters
     ----------
@@ -254,14 +254,26 @@ def map_objects_to_tiles(
 
     Returns
     -------
-    (pressure_plates, buttons, fountains)
+    (pressure_plates, buttons, fountains, weapons, clothes, scrolls, potions, containers, misc_items)
         pressure_plates: list of dicts with keys 'level', 'x', 'y', 'type'
         buttons: list of dicts with keys 'level', 'x', 'y', 'direction', 'type'
         fountains: list of dicts with keys 'level', 'x', 'y', 'direction'
+        weapons: list of dicts with keys 'level', 'x', 'y', 'type', 'charges'
+        clothes: list of dicts with keys 'level', 'x', 'y', 'type', 'charges'
+        scrolls: list of dicts with keys 'level', 'x', 'y', 'type', 'charges'
+        potions: list of dicts with keys 'level', 'x', 'y', 'type', 'charges'
+        containers: list of dicts with keys 'level', 'x', 'y', 'type', 'charges'
+        misc_items: list of dicts with keys 'level', 'x', 'y', 'type', 'charges'
     """
     pressure_plates: List[dict] = []
     buttons: List[dict] = []
     fountains: List[dict] = []
+    weapons: List[dict] = []
+    clothes: List[dict] = []
+    scrolls: List[dict] = []
+    potions: List[dict] = []
+    containers: List[dict] = []
+    misc_items: List[dict] = []
     # Build mapping of tile coordinates that have objects (bit 4 set)
     tiles_with_objects: List[Tuple[int, int, int]] = []  # (level_idx, x, y)
     # Iterate through maps in order
@@ -355,6 +367,147 @@ def map_objects_to_tiles(
                                     'y': y,
                                     'direction': direction,
                                 })
+            elif category == 2:  # Stairs (if they exist as objects)
+                # Stairs are typically tile-based, but let's check if they exist as objects
+                # For now, we'll process stairs from tile data in the main loop
+                pass
+            elif category == 5:  # Weapons
+                # Read weapon data (4 bytes per entry)
+                if number < 1000:  # Reasonable limit
+                    weapon_offset = object_next_lookup[5][0] + number * 4
+                    # Weapon structure (4 bytes):
+                    # 0x0: Next object ID (word)
+                    # 0x2: Weapon type (word)
+                    weapon_type = read_word_le(data, weapon_offset + 2)
+                    weapons.append({
+                        'level': map_defs[level_idx]['level'],
+                        'x': x,
+                        'y': y,
+                        'type': weapon_type,
+                        'charges': 1,  # Default charge count
+                    })
+            elif category == 6:  # Clothes
+                # Read clothes data (4 bytes per entry)
+                if number < 1000:
+                    clothes_offset = object_next_lookup[6][0] + number * 4
+                    clothes_type = read_word_le(data, clothes_offset + 2)
+                    clothes.append({
+                        'level': map_defs[level_idx]['level'],
+                        'x': x,
+                        'y': y,
+                        'type': clothes_type,
+                        'charges': 1,
+                    })
+            elif category == 7:  # Scrolls
+                # Read scroll data (4 bytes per entry)
+                if number < 1000:
+                    scroll_offset = object_next_lookup[7][0] + number * 4
+                    scroll_type = read_word_le(data, scroll_offset + 2)
+                    scrolls.append({
+                        'level': map_defs[level_idx]['level'],
+                        'x': x,
+                        'y': y,
+                        'type': scroll_type,
+                        'charges': 1,
+                    })
+            elif category == 8:  # Potions
+                # Read potion data (4 bytes per entry)
+                if number < 1000:
+                    potion_offset = object_next_lookup[8][0] + number * 4
+                    potion_type = read_word_le(data, potion_offset + 2)
+                    potions.append({
+                        'level': map_defs[level_idx]['level'],
+                        'x': x,
+                        'y': y,
+                        'type': potion_type,
+                        'charges': 1,
+                    })
+            elif category == 9:  # Containers
+                # Read container data (8 bytes per entry)
+                if number < 1000:
+                    container_offset = object_next_lookup[9][0] + number * 8
+                    # Container structure (8 bytes):
+                    # 0x0: Next object ID (word)
+                    # 0x2: Container type (word) - Bits 2-1: Container type (00 = Chest)
+                    # 0x4: Flags (word)
+                    # 0x6: Reserved (word)
+                    container_type_word = read_word_le(data, container_offset + 2)
+                    container_type_bits = (container_type_word >> 1) & 0x3  # Extract bits 2-1
+                    # Only include chests (container type 00)
+                    if container_type_bits == 0:
+                        containers.append({
+                            'level': map_defs[level_idx]['level'],
+                            'x': x,
+                            'y': y,
+                            'type': 'chest',
+                            'charges': 1,
+                        })
+            elif category == 10:  # Misc items
+                # Read misc item data (4 bytes per entry)
+                if number < 1000:
+                    misc_offset = object_next_lookup[10][0] + number * 4
+                    misc_type = read_word_le(data, misc_offset + 2)
+                    
+                    # Map item type numbers to names
+                    item_names = {
+                        128: "special_key",
+                        129: "special_key", 
+                        130: "special_key",
+                        131: "special_key",
+                        132: "torch",
+                        134: "key",
+                        135: "special_key",
+                        136: "special_key",
+                        137: "special_key",
+                        138: "special_key",
+                        139: "special_key",
+                        140: "special_key",
+                        141: "special_key",
+                        142: "special_key",
+                        144: "special_key",
+                        145: "food",
+                        146: "special_key",
+                        147: "special_key",
+                        149: "special_key",
+                        150: "special_key",
+                        151: "special_key",
+                        152: "special_key",
+                        153: "special_key",
+                        154: "special_key",
+                        155: "special_key",
+                        156: "special_key",
+                        157: "gold_coin",
+                        158: "torch",
+                        159: "water",
+                        160: "copper_coin",
+                        163: "silver_coin",
+                        164: "special_key",
+                        165: "special_key",
+                        166: "special_key",
+                        167: "special_key",
+                        168: "special_key",
+                        169: "special_key",
+                        170: "special_key",
+                        171: "rope",
+                        172: "special_key",
+                        173: "special_key",
+                        174: "special_key",
+                        175: "special_key",
+                        176: "special_key",
+                        178: "special_key",
+                        49281: "special_item",
+                    }
+                    
+                    item_name = item_names.get(misc_type, f"misc_{misc_type}")
+                    
+                    misc_items.append({
+                        'level': map_defs[level_idx]['level'],
+                        'x': x,
+                        'y': y,
+                        'type': misc_type,
+                        'name': item_name,
+                        'charges': 1,
+                    })
             # Find next object ID
             # Determine which list to index based on category
             if category not in object_next_lookup:
@@ -365,7 +518,11 @@ def map_objects_to_tiles(
             if next_id == 0xFFFF or next_id == 0xFFFE:
                 break
             current_id = next_id
-    return pressure_plates, buttons, fountains
+    
+    # Filter out special items (type 49281) from misc_items
+    misc_items = [item for item in misc_items if item['type'] != 49281]
+    
+    return pressure_plates, buttons, fountains, weapons, clothes, scrolls, potions, containers, misc_items
 
 
 def main():
@@ -431,7 +588,7 @@ def main():
     # Number of sensors = number of sensors in sensors list (684 sensors)
     sensors_offset = 0x27D4
     sensor_count = 684
-    pressure_plates, buttons, fountains = map_objects_to_tiles(
+    pressure_plates, buttons, fountains, weapons, clothes, scrolls, potions, containers, misc_items = map_objects_to_tiles(
         raw_tile_data,
         raw_presence_data,
         map_defs,
@@ -462,6 +619,12 @@ def main():
         'pressure_plates': pressure_plates,
         'buttons': buttons,
         'fountains': fountains,
+        'weapons': weapons,
+        'clothes': clothes,
+        'scrolls': scrolls,
+        'potions': potions,
+        'containers': containers,
+        'misc_items': misc_items,
     })
     with open(os.path.join(args.output_dir, 'legend.json'), 'w', encoding='utf-8') as f:
         json.dump(legend_json, f, indent=2)

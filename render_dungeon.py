@@ -46,7 +46,7 @@ import os
 import random
 from typing import Dict, List, Tuple, Union
 
-from PIL import Image  # type: ignore
+from PIL import Image, ImageDraw, ImageFont  # type: ignore
 
 def load_base_tiles(asset_dir: str, legend: Dict[str, str]) -> Dict[str, Union[Image.Image, List[Image.Image]]]:
     """Load base tile images from the assets directory.
@@ -142,8 +142,8 @@ def load_overlays(asset_dir: str) -> Dict[str, Image.Image]:
     Returns
     -------
     Dict[str, Image.Image]
-        A dictionary containing overlay images for 'pressure_plate' and 'button'.
-        Missing overlays are mapped to None instead of raising an error.
+        A dictionary containing overlay images for pressure plates, buttons, fountains,
+        stairs, and items/creatures. Missing overlays are mapped to None instead of raising an error.
     """
     overlays: Dict[str, Image.Image] = {}
     # List of overlay names to attempt to load.  If an overlay is missing, its value will be None.
@@ -153,6 +153,22 @@ def load_overlays(asset_dir: str) -> Dict[str, Image.Image]:
         "stairs_up",
         "stairs_down",
         "fountain",
+        "weapon",
+        "clothes",
+        "scroll",
+        "potion",
+        "chest",
+        "creature",
+        # Specific misc items
+        "gold_coin",
+        "silver_coin",
+        "copper_coin",
+        "key",
+        "torch",
+        "food",
+        "water",
+        "rope",
+        "special_key",
     ]:
         filename = f"{name}.png"
         path = os.path.join(asset_dir, filename)
@@ -194,6 +210,12 @@ def render_level(
     plates_by_level: Dict[int, List[dict]],
     buttons_by_level: Dict[int, List[dict]],
     fountains_by_level: Dict[int, List[dict]],
+    weapons_by_level: Dict[int, List[dict]],
+    clothes_by_level: Dict[int, List[dict]],
+    scrolls_by_level: Dict[int, List[dict]],
+    potions_by_level: Dict[int, List[dict]],
+    containers_by_level: Dict[int, List[dict]],
+    misc_items_by_level: Dict[int, List[dict]],
     output_dir: str,
 ) -> str:
     """Render a single map into a PNG image.
@@ -206,14 +228,35 @@ def render_level(
     tile_map : Dict[str, Image.Image]
         Mapping from tile names (e.g., 'floor') to base tile images.
     overlays : Dict[str, Image.Image]
-        Overlay icons mapping, may contain 'pressure_plate' and 'button'.  A
-        value of None means no overlay is available for that type.
+        Overlay icons mapping, may contain 'pressure_plate', 'button', 'fountain',
+        and item/creature icons.  A value of None means no overlay is available for that type.
     plates_by_level : Dict[int, List[dict]]
         Mapping from level number to list of pressure plate dicts.  Each dict
         should contain keys 'level', 'x', 'y'.
     buttons_by_level : Dict[int, List[dict]]
         Mapping from level number to list of button dicts.  Each dict should
         contain keys 'level', 'x', 'y' and 'direction'.
+    fountains_by_level : Dict[int, List[dict]]
+        Mapping from level number to list of fountain dicts.  Each dict should
+        contain keys 'level', 'x', 'y' and 'direction'.
+    weapons_by_level : Dict[int, List[dict]]
+        Mapping from level number to list of weapon dicts.  Each dict should
+        contain keys 'level', 'x', 'y' and 'type'.
+    clothes_by_level : Dict[int, List[dict]]
+        Mapping from level number to list of clothes dicts.  Each dict should
+        contain keys 'level', 'x', 'y' and 'type'.
+    scrolls_by_level : Dict[int, List[dict]]
+        Mapping from level number to list of scroll dicts.  Each dict should
+        contain keys 'level', 'x', 'y' and 'type'.
+    potions_by_level : Dict[int, List[dict]]
+        Mapping from level number to list of potion dicts.  Each dict should
+        contain keys 'level', 'x', 'y' and 'type'.
+    containers_by_level : Dict[int, List[dict]]
+        Mapping from level number to list of chest dicts.  Each dict should
+        contain keys 'level', 'x', 'y' and 'type'.
+    misc_items_by_level : Dict[int, List[dict]]
+        Mapping from level number to list of misc item dicts.  Each dict should
+        contain keys 'level', 'x', 'y' and 'type'.
     output_dir : str
         Directory where the rendered image will be saved.
 
@@ -238,6 +281,13 @@ def render_level(
         tile_size = first_value.size[0]
     height = len(grid)
     width = len(grid[0]) if height > 0 else 0
+    
+    # Helper function to check if a tile is a wall
+    def is_wall_tile(x: int, y: int) -> bool:
+        """Check if the tile at (x, y) is a wall tile."""
+        if y < 0 or y >= height or x < 0 or x >= width:
+            return True  # Out of bounds is treated as wall
+        return grid[y][x] == "wall"
     # Orientation grid for doors (optional)
     door_orientation_grid = level_data.get("door_orientation")
     # Orientation and direction grids for stairs (optional)
@@ -409,6 +459,82 @@ def render_level(
             dx = x * tile_size + (tile_size - rotated.width) // 2
             dy = y * tile_size + (tile_size - rotated.height) // 2
             canvas.alpha_composite(rotated, (dx, dy))
+    
+    # Overlay weapons
+    weapon_icon = overlays.get("weapon")
+    if weapon_icon:
+        weapons = weapons_by_level.get(level_num, [])
+        for weapon in weapons:
+            x, y = weapon.get("x"), weapon.get("y")
+            if x is None or y is None or is_wall_tile(x, y):
+                continue
+            dx = x * tile_size + (tile_size - weapon_icon.width) // 2
+            dy = y * tile_size + (tile_size - weapon_icon.height) // 2
+            canvas.alpha_composite(weapon_icon, (dx, dy))
+    
+    # Overlay clothes
+    clothes_icon = overlays.get("clothes")
+    if clothes_icon:
+        clothes = clothes_by_level.get(level_num, [])
+        for clothes_item in clothes:
+            x, y = clothes_item.get("x"), clothes_item.get("y")
+            if x is None or y is None or is_wall_tile(x, y):
+                continue
+            dx = x * tile_size + (tile_size - clothes_icon.width) // 2
+            dy = y * tile_size + (tile_size - clothes_icon.height) // 2
+            canvas.alpha_composite(clothes_icon, (dx, dy))
+    
+    # Overlay scrolls
+    scroll_icon = overlays.get("scroll")
+    if scroll_icon:
+        scrolls = scrolls_by_level.get(level_num, [])
+        for scroll in scrolls:
+            x, y = scroll.get("x"), scroll.get("y")
+            if x is None or y is None or is_wall_tile(x, y):
+                continue
+            dx = x * tile_size + (tile_size - scroll_icon.width) // 2
+            dy = y * tile_size + (tile_size - scroll_icon.height) // 2
+            canvas.alpha_composite(scroll_icon, (dx, dy))
+    
+    # Overlay potions
+    potion_icon = overlays.get("potion")
+    if potion_icon:
+        potions = potions_by_level.get(level_num, [])
+        for potion in potions:
+            x, y = potion.get("x"), potion.get("y")
+            if x is None or y is None or is_wall_tile(x, y):
+                continue
+            dx = x * tile_size + (tile_size - potion_icon.width) // 2
+            dy = y * tile_size + (tile_size - potion_icon.height) // 2
+            canvas.alpha_composite(potion_icon, (dx, dy))
+    
+    # Overlay chests
+    chest_icon = overlays.get("chest")
+    if chest_icon:
+        chests = containers_by_level.get(level_num, [])
+        for chest in chests:
+            x, y = chest.get("x"), chest.get("y")
+            if x is None or y is None or is_wall_tile(x, y):
+                continue
+            dx = x * tile_size + (tile_size - chest_icon.width) // 2
+            dy = y * tile_size + (tile_size - chest_icon.height) // 2
+            canvas.alpha_composite(chest_icon, (dx, dy))
+    
+    # Overlay specific misc items by name
+    misc_items = misc_items_by_level.get(level_num, [])
+    for misc_item in misc_items:
+        x, y = misc_item.get("x"), misc_item.get("y")
+        item_name = misc_item.get("name", "misc")
+        if x is None or y is None or is_wall_tile(x, y):
+            continue
+        
+        # Get the specific icon for this item type
+        item_icon = overlays.get(item_name)
+        if item_icon:
+            dx = x * tile_size + (tile_size - item_icon.width) // 2
+            dy = y * tile_size + (tile_size - item_icon.height) // 2
+            canvas.alpha_composite(item_icon, (dx, dy))
+    
     # Add a black border around the map.  A fixed border of 50 pixels is drawn
     # on all four sides of the image.  To change the border thickness, adjust
     # the border_size value below.
@@ -452,10 +578,16 @@ def main():
     base_tiles = load_base_tiles(args.assets_dir, tile_mapping)
     # Load overlay icons
     overlay_icons = load_overlays(args.assets_dir)
-    # Build per‑level lookup for plates and buttons
+    # Build per‑level lookup for plates, buttons, fountains, items, and creatures
     plates_by_level = index_by_level(legend_data.get("pressure_plates", []))
     buttons_by_level = index_by_level(legend_data.get("buttons", []))
     fountains_by_level = index_by_level(legend_data.get("fountains", []))
+    weapons_by_level = index_by_level(legend_data.get("weapons", []))
+    clothes_by_level = index_by_level(legend_data.get("clothes", []))
+    scrolls_by_level = index_by_level(legend_data.get("scrolls", []))
+    potions_by_level = index_by_level(legend_data.get("potions", []))
+    containers_by_level = index_by_level(legend_data.get("containers", []))
+    misc_items_by_level = index_by_level(legend_data.get("misc_items", []))
     # Render each level JSON file
     level_files = [
         f
@@ -479,6 +611,12 @@ def main():
             plates_by_level=plates_by_level,
             buttons_by_level=buttons_by_level,
             fountains_by_level=fountains_by_level,
+            weapons_by_level=weapons_by_level,
+            clothes_by_level=clothes_by_level,
+            scrolls_by_level=scrolls_by_level,
+            potions_by_level=potions_by_level,
+            containers_by_level=containers_by_level,
+            misc_items_by_level=misc_items_by_level,
             output_dir=args.output_dir,
         )
         print(f"Rendered level {level_data.get('level')} -> {saved_path}")
